@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="generator/application.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="autoDelimitKeywords" value="true"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.cube.webadmin.utils.MyMapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${druid.driver-class-name}" connectionURL="${druid.url}" userId="${druid.username}" password="${druid.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.cube.webadmin.po" targetProject="../web-admin/src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="../web-admin/src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.cube.webadmin.dao" targetProject="../web-admin/src/main/java" type="XMLMAPPER"/>
+
+        <!--后台管理相关 start-->
+        <table schema="t" tableName="t_user">
+            <!--mysql 配置-->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_user_role">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_role_permission">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_role">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_permission">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_log">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!--后台管理相关 end-->
+    </context>
+</generatorConfiguration>

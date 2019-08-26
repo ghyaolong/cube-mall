@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cube.ordercenter.dao.TOrderMapper">
+  <resultMap id="BaseResultMap" type="com.cube.ordercenter.po.TOrder">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="member_id" jdbcType="INTEGER" property="memberId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="after_status" jdbcType="INTEGER" property="afterStatus" />
+    <result column="product_count" jdbcType="INTEGER" property="productCount" />
+    <result column="product_amount_total" jdbcType="DECIMAL" property="productAmountTotal" />
+    <result column="order_amount_total" jdbcType="DECIMAL" property="orderAmountTotal" />
+    <result column="address_id" jdbcType="VARCHAR" property="addressId" />
+    <result column="pay_channel" jdbcType="TINYINT" property="payChannel" />
+    <result column="out_trade_no" jdbcType="VARCHAR" property="outTradeNo" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    <result column="delivery_time" jdbcType="TIMESTAMP" property="deliveryTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="is_comment" jdbcType="INTEGER" property="isComment" />
+    <result column="delivery_name" jdbcType="VARCHAR" property="deliveryName" />
+    <result column="delivery_code" jdbcType="VARCHAR" property="deliveryCode" />
+    <result column="sku_id" jdbcType="INTEGER" property="skuId" />
+    <result column="attribute_options" jdbcType="VARCHAR" property="attributeOptions" />
+  </resultMap>
+</mapper>

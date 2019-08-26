@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cube.productcenter.dao.TSpecificationsMapper">
+  <resultMap id="BaseResultMap" type="com.cube.productcenter.po.TSpecifications">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="parameter_name" jdbcType="VARCHAR" property="parameterName" />
+    <result column="specific_group_id" jdbcType="VARCHAR" property="specificGroupId" />
+    <result column="category_id" jdbcType="VARCHAR" property="categoryId" />
+    <result column="show_position" jdbcType="VARCHAR" property="showPosition" />
+  </resultMap>
+</mapper>
