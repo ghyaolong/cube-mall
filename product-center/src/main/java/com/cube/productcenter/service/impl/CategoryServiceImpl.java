@@ -38,13 +38,10 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     private void findCategory(CategoryVO vo) {
-
         Example example = new Example(TCategory.class);
         example.createCriteria().andEqualTo("parentId",vo.getId());
-        List<CategoryVO> voList = new ArrayList<>();
         example.setOrderByClause("sequence asc");
         List<TCategory> tCategories = tCategoryMapper.selectByExample(example);
-
         List<CategoryVO> listVO = MyBeanUtils.copyList(tCategories, CategoryVO.class, "listVO");
         vo.setListVO(listVO);
         for (TCategory tCategory : tCategories) {

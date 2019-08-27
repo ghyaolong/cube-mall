@@ -11,7 +11,7 @@
  Target Server Version : 80017
  File Encoding         : 65001
 
- Date: 26/08/2019 17:22:08
+ Date: 27/08/2019 11:52:47
 */
 
 SET NAMES utf8mb4;
@@ -74,8 +74,23 @@ CREATE TABLE `t_category`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类名称',
   `code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类编码',
+  `parent_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '父类Id',
+  `is_visable` int(11) NOT NULL DEFAULT 0 COMMENT '门户是否可见  0：可见    1：隐藏',
+  `url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '链接URL',
+  `sequence` float(255, 0) NULL DEFAULT NULL COMMENT '排序，数字越小，越靠前',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '分类' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_category
+-- ----------------------------
+INSERT INTO `t_category` VALUES ('1', '家用电器', '100', '0', 0, NULL, 10);
+INSERT INTO `t_category` VALUES ('2', '电视', '101', '1', 0, NULL, 10);
+INSERT INTO `t_category` VALUES ('3', '空调', '101', '1', 0, NULL, 10);
+INSERT INTO `t_category` VALUES ('4', '洗衣机', '102', '1', 0, NULL, 10);
+INSERT INTO `t_category` VALUES ('5', '手机', '200', '0', 0, NULL, 10);
+INSERT INTO `t_category` VALUES ('6', '游戏机', '201', '5', 0, NULL, 10);
+INSERT INTO `t_category` VALUES ('7', '老人机', '202', '5', 0, NULL, 10);
 
 -- ----------------------------
 -- Table structure for t_department
