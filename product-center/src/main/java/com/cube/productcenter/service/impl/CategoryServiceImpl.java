@@ -5,12 +5,10 @@ import com.cube.productcenter.dao.TCategoryMapper;
 import com.cube.productcenter.po.TCategory;
 import com.cube.productcenter.service.CategoryService;
 import com.cube.productcenter.vo.CategoryVO;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +25,6 @@ public class CategoryServiceImpl implements CategoryService {
     public List<CategoryVO> findAll() {
         Example example = new Example(TCategory.class);
         example.createCriteria().andEqualTo("parentId",0);
-        List<CategoryVO> voList = new ArrayList<>();
         example.setOrderByClause("sequence asc");
         List<TCategory> tCategories = tCategoryMapper.selectByExample(example);
         List<CategoryVO> categoryVOS = MyBeanUtils.copyList(tCategories, CategoryVO.class);
