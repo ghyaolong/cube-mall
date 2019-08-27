@@ -76,6 +76,8 @@
         <module>pay-center</module>
         <module>mall-zuul</module>
         <module>cube-common</module>
+        <module>mall-inventory-service</module>
+        <module>mall-shopping-cart-service</module>
     </modules>
 
     <dependencyManagement>

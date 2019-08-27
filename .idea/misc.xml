@@ -18,6 +18,8 @@
         <option value="$PROJECT_DIR$/pay-center/pom.xml" />
         <option value="$PROJECT_DIR$/mall-zuul/pom.xml" />
         <option value="$PROJECT_DIR$/web-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-shopping-cart-service/pom.xml" />
+        <option value="$PROJECT_DIR$/mall-inventory-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

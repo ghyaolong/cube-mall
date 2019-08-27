@@ -15,5 +15,4 @@ public class MallZuulApplication {
     public static void main(String[] args) {
         SpringApplication.run(MallZuulApplication.class, args);
     }
-
 }

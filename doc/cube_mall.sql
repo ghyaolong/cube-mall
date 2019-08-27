@@ -3,15 +3,15 @@
 
  Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 80017
+ Source Server Version : 80015
  Source Host           : localhost:3306
  Source Schema         : cube_mall
 
  Target Server Type    : MySQL
- Target Server Version : 80017
+ Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 27/08/2019 11:52:47
+ Date: 28/08/2019 00:54:12
 */
 
 SET NAMES utf8mb4;
@@ -41,8 +41,18 @@ CREATE TABLE `t_attribute`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '属性名称',
   `category_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类id',
+  `is_query` int(11) NOT NULL DEFAULT 0 COMMENT '是否参与查询  0：参与   1：不参与',
+  `is_visable` int(11) NOT NULL DEFAULT 0 COMMENT '是否可见   0：可见   1：隐藏',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '属性' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_attribute
+-- ----------------------------
+INSERT INTO `t_attribute` VALUES ('1', '机身颜色', '5', 0, 0);
+INSERT INTO `t_attribute` VALUES ('2', '网络', '5', 0, 0);
+INSERT INTO `t_attribute` VALUES ('3', '屏幕尺寸', '5', 0, 0);
+INSERT INTO `t_attribute` VALUES ('4', '热点', '5', 0, 0);
 
 -- ----------------------------
 -- Table structure for t_attribute_options
@@ -52,8 +62,24 @@ CREATE TABLE `t_attribute_options`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `option` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '选项值',
   `attribute_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '属性id',
+  `is_query` int(11) NOT NULL DEFAULT 0 COMMENT '是否参与查询  0：参与   1：不参与',
+  `is_visable` int(11) NOT NULL DEFAULT 0 COMMENT '是否可见   0：可见   1：隐藏',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '属性选项' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_attribute_options
+-- ----------------------------
+INSERT INTO `t_attribute_options` VALUES ('1', '白色', '1', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('10', '4.5-3.1英寸', '3', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('2', '黑色', '1', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('3', '金色', '1', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('4', '移动4G', '2', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('5', '联通5G', '2', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('6', '电信4G', '2', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('7', '其他', '2', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('8', '5.5-5.1英寸', '3', 0, 0);
+INSERT INTO `t_attribute_options` VALUES ('9', '5.0-4.6英寸', '3', 0, 0);
 
 -- ----------------------------
 -- Table structure for t_brand
@@ -65,6 +91,13 @@ CREATE TABLE `t_brand`  (
   `code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品牌编码',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '品牌' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_brand
+-- ----------------------------
+INSERT INTO `t_brand` VALUES ('1', 'Apple', '100');
+INSERT INTO `t_brand` VALUES ('2', '小米', '101');
+INSERT INTO `t_brand` VALUES ('3', '海尔', '102');
 
 -- ----------------------------
 -- Table structure for t_category
@@ -644,12 +677,19 @@ INSERT INTO `t_role_permission` VALUES ('175877432614588417', NULL, '2019-08-19 
 DROP TABLE IF EXISTS `t_sku`;
 CREATE TABLE `t_sku`  (
   `id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'sku名称',
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'sku名称',
   `code` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'sku编码',
   `price` double(10, 2) NULL DEFAULT NULL COMMENT '价格',
-  `spu_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'spuId',
+  `spu_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'spuId',
+  `stock` int(11) NOT NULL DEFAULT 0 COMMENT '库存',
+  `status` int(11) NOT NULL DEFAULT 0 COMMENT '0:未上架  1：已上架   2：已下架  3：已删除',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'SKU' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_sku
+-- ----------------------------
+INSERT INTO `t_sku` VALUES ('1', 'iphone6', '100', 4599.00, '1', 50, 0);
 
 -- ----------------------------
 -- Table structure for t_sku_options
@@ -663,6 +703,13 @@ CREATE TABLE `t_sku_options`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'sku-属性选项关联' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of t_sku_options
+-- ----------------------------
+INSERT INTO `t_sku_options` VALUES ('1', '1', '1');
+INSERT INTO `t_sku_options` VALUES ('2', '1', '4');
+INSERT INTO `t_sku_options` VALUES ('3', '1', '8');
+
+-- ----------------------------
 -- Table structure for t_sku_specifications_options
 -- ----------------------------
 DROP TABLE IF EXISTS `t_sku_specifications_options`;
@@ -674,6 +721,14 @@ CREATE TABLE `t_sku_specifications_options`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of t_sku_specifications_options
+-- ----------------------------
+INSERT INTO `t_sku_specifications_options` VALUES ('1', '1', '1');
+INSERT INTO `t_sku_specifications_options` VALUES ('2', '1', '4');
+INSERT INTO `t_sku_specifications_options` VALUES ('3', '1', '8');
+INSERT INTO `t_sku_specifications_options` VALUES ('4', '1', '9');
+
+-- ----------------------------
 -- Table structure for t_specifications
 -- ----------------------------
 DROP TABLE IF EXISTS `t_specifications`;
@@ -683,8 +738,22 @@ CREATE TABLE `t_specifications`  (
   `specific_group_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '规格组',
   `category_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '分类Id',
   `show_position` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '显示位置',
+  `is_query` int(11) NOT NULL DEFAULT 0 COMMENT '是否参与查询  0：参与   1：不参与',
+  `is_visable` int(11) NOT NULL DEFAULT 0 COMMENT '是否可见   0：可见   1：隐藏',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '规格' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_specifications
+-- ----------------------------
+INSERT INTO `t_specifications` VALUES ('1', '品牌', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('2', '型号', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('3', '颜色', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('4', '上市年份', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('5', '上市月份', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('6', '4G网络制式', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('7', '机身存储', '1', '5', '0', 0, 0);
+INSERT INTO `t_specifications` VALUES ('8', '存储卡类型', '1', '5', '0', 0, 0);
 
 -- ----------------------------
 -- Table structure for t_specifications_group
@@ -697,6 +766,13 @@ CREATE TABLE `t_specifications_group`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '规格组' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of t_specifications_group
+-- ----------------------------
+INSERT INTO `t_specifications_group` VALUES (1, '主体');
+INSERT INTO `t_specifications_group` VALUES (2, '网络');
+INSERT INTO `t_specifications_group` VALUES (3, '存储');
+
+-- ----------------------------
 -- Table structure for t_specifications_options
 -- ----------------------------
 DROP TABLE IF EXISTS `t_specifications_options`;
@@ -706,6 +782,22 @@ CREATE TABLE `t_specifications_options`  (
   `specifiction_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '规格id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_specifications_options
+-- ----------------------------
+INSERT INTO `t_specifications_options` VALUES (1, '苹果', '1');
+INSERT INTO `t_specifications_options` VALUES (2, '小米', '1');
+INSERT INTO `t_specifications_options` VALUES (3, 'VIVO', '1');
+INSERT INTO `t_specifications_options` VALUES (4, 'iPhone6 plus A1524', '2');
+INSERT INTO `t_specifications_options` VALUES (5, '小米8 标准版', '2');
+INSERT INTO `t_specifications_options` VALUES (6, '金色', '3');
+INSERT INTO `t_specifications_options` VALUES (7, '黑色', '3');
+INSERT INTO `t_specifications_options` VALUES (8, '白色', '3');
+INSERT INTO `t_specifications_options` VALUES (9, '16G', '7');
+INSERT INTO `t_specifications_options` VALUES (10, '32G', '7');
+INSERT INTO `t_specifications_options` VALUES (11, '64G', '7');
+INSERT INTO `t_specifications_options` VALUES (12, '128G', '7');
 
 -- ----------------------------
 -- Table structure for t_spu
@@ -721,6 +813,11 @@ CREATE TABLE `t_spu`  (
   `brand_id` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '品牌id',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = 'SPU' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_spu
+-- ----------------------------
+INSERT INTO `t_spu` VALUES ('1', 'Apple手机', '100', 'iPhone 6采用4.7英寸屏幕，分辨率为1334*750像素，内置64位构架的苹果A8处理器，性能提升非常明显；同时还搭配全新的M8协处理器，专为健康应用所设计；采用后置800万像素镜头，前置120万像素鞠昀摄影FaceTime HD 高清摄像头；并且加入Touch ID支持指纹识别，首次新增NFC功能；也是一款三网通手机，4G LTE连接速度可达150Mbps，支持多达20个LTE频段', 'iPhone 6 配备了基于 64 位台式电脑级架构的 A8 芯片。而让这一强大性能进一步提升的，是 M8 运动协处理器。它能通过包括全新气压计在内的诸多先进传感器，来高效测量你的活动状态。A8 芯片采用了先进的 20 纳米制程技术。它在极为小巧高效的芯片上凝聚了 20 亿个晶体管，不仅性能不可思议，而且在效能方面还比 A7 芯片提升了 50% 之多。', '1', '1');
 
 -- ----------------------------
 -- Table structure for t_user

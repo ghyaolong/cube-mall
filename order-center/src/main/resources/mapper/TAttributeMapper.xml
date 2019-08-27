@@ -8,5 +8,7 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="category_id" jdbcType="VARCHAR" property="categoryId" />
+    <result column="is_query" jdbcType="INTEGER" property="isQuery" />
+    <result column="is_visable" jdbcType="INTEGER" property="isVisable" />
   </resultMap>
 </mapper>

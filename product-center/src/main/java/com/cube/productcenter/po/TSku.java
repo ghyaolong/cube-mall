@@ -30,6 +30,16 @@ public class TSku {
     private String spuId;
 
     /**
+     * 库存
+     */
+    private Integer stock;
+
+    /**
+     * 0:未上架  1：已上架   2：已下架  3：已删除
+     */
+    private Integer status;
+
+    /**
      * @return id
      */
     public String getId() {
@@ -113,5 +123,41 @@ public class TSku {
      */
     public void setSpuId(String spuId) {
         this.spuId = spuId;
+    }
+
+    /**
+     * 获取库存
+     *
+     * @return stock - 库存
+     */
+    public Integer getStock() {
+        return stock;
+    }
+
+    /**
+     * 设置库存
+     *
+     * @param stock 库存
+     */
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    /**
+     * 获取0:未上架  1：已上架   2：已下架  3：已删除
+     *
+     * @return status - 0:未上架  1：已上架   2：已下架  3：已删除
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * 设置0:未上架  1：已上架   2：已下架  3：已删除
+     *
+     * @param status 0:未上架  1：已上架   2：已下架  3：已删除
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

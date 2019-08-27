@@ -33,6 +33,18 @@ public class TSpecifications {
     private String showPosition;
 
     /**
+     * 是否参与查询  0：参与   1：不参与
+     */
+    @Column(name = "is_query")
+    private Integer isQuery;
+
+    /**
+     * 是否可见   0：可见   1：隐藏
+     */
+    @Column(name = "is_visable")
+    private Integer isVisable;
+
+    /**
      * @return id
      */
     public String getId() {
@@ -116,5 +128,41 @@ public class TSpecifications {
      */
     public void setShowPosition(String showPosition) {
         this.showPosition = showPosition;
+    }
+
+    /**
+     * 获取是否参与查询  0：参与   1：不参与
+     *
+     * @return is_query - 是否参与查询  0：参与   1：不参与
+     */
+    public Integer getIsQuery() {
+        return isQuery;
+    }
+
+    /**
+     * 设置是否参与查询  0：参与   1：不参与
+     *
+     * @param isQuery 是否参与查询  0：参与   1：不参与
+     */
+    public void setIsQuery(Integer isQuery) {
+        this.isQuery = isQuery;
+    }
+
+    /**
+     * 获取是否可见   0：可见   1：隐藏
+     *
+     * @return is_visable - 是否可见   0：可见   1：隐藏
+     */
+    public Integer getIsVisable() {
+        return isVisable;
+    }
+
+    /**
+     * 设置是否可见   0：可见   1：隐藏
+     *
+     * @param isVisable 是否可见   0：可见   1：隐藏
+     */
+    public void setIsVisable(Integer isVisable) {
+        this.isVisable = isVisable;
     }
 }

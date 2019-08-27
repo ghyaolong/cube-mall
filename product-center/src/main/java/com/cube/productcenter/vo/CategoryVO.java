@@ -39,5 +39,7 @@ public class CategoryVO {
      */
     private Float sequence;
 
+    private Integer stock;
+
     private List<CategoryVO> listVO;
 }

@@ -7,13 +7,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cube-common" />
+        <module name="product-center" />
         <module name="eureka-server" />
-        <module name="generator" />
+        <module name="mall-shopping-cart-service" />
+        <module name="web-admin" />
         <module name="mall-zuul" />
+        <module name="mall-inventory-service" />
         <module name="order-center" />
         <module name="pay-center" />
-        <module name="product-center" />
-        <module name="web-admin" />
+        <module name="generator" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -27,6 +29,8 @@
       <module name="eureka-server" options="-parameters" />
       <module name="generator" options="-parameters" />
       <module name="mall-admin" options="-parameters" />
+      <module name="mall-inventory-service" options="-parameters" />
+      <module name="mall-shopping-cart-service" options="-parameters" />
       <module name="mall-zuul" options="-parameters" />
       <module name="order-center" options="-parameters" />
       <module name="pay-center" options="-parameters" />

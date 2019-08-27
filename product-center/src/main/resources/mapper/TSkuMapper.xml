@@ -10,5 +10,7 @@
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="spu_id" jdbcType="VARCHAR" property="spuId" />
+    <result column="stock" jdbcType="INTEGER" property="stock" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
 </mapper>
