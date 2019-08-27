@@ -75,6 +75,7 @@
         <module>order-center</module>
         <module>pay-center</module>
         <module>mall-zuul</module>
+        <module>cube-common</module>
     </modules>
 
     <dependencyManagement>

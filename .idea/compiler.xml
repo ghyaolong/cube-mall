@@ -6,13 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="product-center" />
+        <module name="cube-common" />
         <module name="eureka-server" />
-        <module name="web-admin" />
+        <module name="generator" />
         <module name="mall-zuul" />
         <module name="order-center" />
         <module name="pay-center" />
-        <module name="generator" />
+        <module name="product-center" />
+        <module name="web-admin" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -21,6 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cube-common" options="-parameters" />
       <module name="cube-mall" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
       <module name="generator" options="-parameters" />

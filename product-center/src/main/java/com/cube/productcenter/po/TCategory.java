@@ -19,6 +19,28 @@ public class TCategory {
     private String code;
 
     /**
+     * 父类Id
+     */
+    @Column(name = "parent_id")
+    private String parentId;
+
+    /**
+     * 门户是否可见  0：可见    1：隐藏
+     */
+    @Column(name = "is_visable")
+    private Integer isVisable;
+
+    /**
+     * 链接URL
+     */
+    private String url;
+
+    /**
+     * 排序，数字越小，越靠前
+     */
+    private Float sequence;
+
+    /**
      * @return id
      */
     public String getId() {
@@ -66,5 +88,77 @@ public class TCategory {
      */
     public void setCode(String code) {
         this.code = code;
+    }
+
+    /**
+     * 获取父类Id
+     *
+     * @return parent_id - 父类Id
+     */
+    public String getParentId() {
+        return parentId;
+    }
+
+    /**
+     * 设置父类Id
+     *
+     * @param parentId 父类Id
+     */
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
+
+    /**
+     * 获取门户是否可见  0：可见    1：隐藏
+     *
+     * @return is_visable - 门户是否可见  0：可见    1：隐藏
+     */
+    public Integer getIsVisable() {
+        return isVisable;
+    }
+
+    /**
+     * 设置门户是否可见  0：可见    1：隐藏
+     *
+     * @param isVisable 门户是否可见  0：可见    1：隐藏
+     */
+    public void setIsVisable(Integer isVisable) {
+        this.isVisable = isVisable;
+    }
+
+    /**
+     * 获取链接URL
+     *
+     * @return url - 链接URL
+     */
+    public String getUrl() {
+        return url;
+    }
+
+    /**
+     * 设置链接URL
+     *
+     * @param url 链接URL
+     */
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    /**
+     * 获取排序，数字越小，越靠前
+     *
+     * @return sequence - 排序，数字越小，越靠前
+     */
+    public Float getSequence() {
+        return sequence;
+    }
+
+    /**
+     * 设置排序，数字越小，越靠前
+     *
+     * @param sequence 排序，数字越小，越靠前
+     */
+    public void setSequence(Float sequence) {
+        this.sequence = sequence;
     }
 }

@@ -8,5 +8,9 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="is_visable" jdbcType="INTEGER" property="isVisable" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="sequence" jdbcType="REAL" property="sequence" />
   </resultMap>
 </mapper>

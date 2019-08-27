@@ -22,8 +22,8 @@
                 <configuration>
                     <!--后台相关-->
                     <!--<configurationFile>src/main/resources/generator/generatorConfig-admin.xml</configurationFile>-->
-                    <!--<configurationFile>src/main/resources/generator/generatorConfig-product.xml</configurationFile>-->
-                    <configurationFile>src/main/resources/generator/generatorConfig-order.xml</configurationFile>
+                    <configurationFile>src/main/resources/generator/generatorConfig-product.xml</configurationFile>
+                    <!--<configurationFile>src/main/resources/generator/generatorConfig-order.xml</configurationFile>-->
                     <overwrite>true</overwrite>
                     <verbose>true</verbose>
                 </configuration>
