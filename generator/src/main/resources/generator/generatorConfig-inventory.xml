@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="generator/application.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="autoDelimitKeywords" value="true"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.cube.mallinventoryservice.utils.MyMapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${druid.driver-class-name}" connectionURL="${druid.url}" userId="${druid.username}" password="${druid.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.cube.mallinventoryservice.po" targetProject="../mall-inventory-service/src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject="../mall-inventory-service/src/main/resources"/>
+
+        <javaClientGenerator targetPackage="com.cube.mallinventoryservice.dao" targetProject="../mall-inventory-service/src/main/java" type="XMLMAPPER"/>
+
+        <!-- 商品相关 start-->
+        <table schema="t" tableName="t_spu">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_sku">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_sku_options">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_sku_specifications_options">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_specifications">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_specifications_group">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_specifications_options">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_category">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_brand">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_attribute_options">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <table schema="t" tableName="t_attribute">
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+        <!-- 商品相关 end-->
+    </context>
+</generatorConfiguration>
