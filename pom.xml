@@ -19,7 +19,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.7.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
@@ -79,8 +78,6 @@
         <module>mall-inventory-service</module>
         <module>mall-shopping-cart-service</module>
         <module>mall-model</module>
-        <module>mall-model</module>
-        <module>mall-model</module>
     </modules>
 
     <dependencyManagement>
@@ -94,15 +91,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
-
 
 </project>
