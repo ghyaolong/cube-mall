@@ -1,6 +1,8 @@
 package com.cube.mallinventoryservice.controller;
 
 import com.cube.mall.enums.ExceptionCode;
+import com.cube.mall.model.Message;
+import com.cube.mall.model.ResponseUtil;
 import com.cube.mallinventoryservice.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,11 +29,12 @@ public class InventoryController {
      * @return
      */
     @PostMapping("/subtract")
-    public Boolean subtractInventroy(String skuId,Integer num){
+    public Message subtractInventroy(String skuId, Integer num){
         if(num<=0){
-            throw new BizException(ExceptionCode.REQUEST_PARAM_ERROR);
+            //throw new BizException(ExceptionCode.REQUEST_PARAM_ERROR);
+            return ResponseUtil.responseBody(ExceptionCode.REQUEST_PARAM_ERROR.getCode(),ExceptionCode.REQUEST_PARAM_ERROR.getMsg());
         }
         inventoryService.subtractInventroy(skuId,num);
-        return true;
+        return ResponseUtil.responseBody("操作成功");
     }
 }

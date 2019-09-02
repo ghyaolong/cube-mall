@@ -1,5 +1,9 @@
 package com.cube.productcenter.controller;
 
+import com.cube.mall.constant.MsgStatus;
+import com.cube.mall.model.Constant;
+import com.cube.mall.model.Message;
+import com.cube.mall.model.ResponseUtil;
 import com.cube.productcenter.feign.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +21,8 @@ public class SkuController {
     private InventoryService inventoryService;
 
     @PostMapping("/subtract")
-    public Boolean substactStock(String skuId,Integer num){
-        Boolean bool = inventoryService.subtractInventroy(skuId, num);
-        return bool;
+    public Message substactStock(String skuId, Integer num){
+        Message message = inventoryService.subtractInventroy(skuId, num);
+        return ResponseUtil.responseBody(message.getStatus().equals(MsgStatus.SUCCESS));
     }
 }
