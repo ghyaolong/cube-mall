@@ -78,6 +78,7 @@
         <module>mall-inventory-service</module>
         <module>mall-shopping-cart-service</module>
         <module>mall-model</module>
+        <module>cube-common</module>
     </modules>
 
     <dependencyManagement>

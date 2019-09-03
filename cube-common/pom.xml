@@ -10,8 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cube-common</artifactId>
-    <packaging>war</packaging>
 
-    <name>cube-common</name>
-    <description>cube-mall工具类</description>
+
 </project>
