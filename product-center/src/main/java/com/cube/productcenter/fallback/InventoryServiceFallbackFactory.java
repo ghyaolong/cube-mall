@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @description
  * @date
  */
-@Component
+//@Component
 public class InventoryServiceFallbackFactory implements FallbackFactory<InventoryService> {
 
     @Override

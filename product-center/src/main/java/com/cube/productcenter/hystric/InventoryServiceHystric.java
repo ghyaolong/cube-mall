@@ -1,7 +1,10 @@
 package com.cube.productcenter.hystric;
 
+import com.cube.mall.enums.ExceptionCode;
 import com.cube.mall.model.Message;
+import com.cube.mall.model.ResponseUtil;
 import com.cube.productcenter.feign.InventoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -9,11 +12,13 @@ import org.springframework.stereotype.Component;
  * @description
  * @date
  */
-//@Component
+@Slf4j
+@Component
 public class InventoryServiceHystric implements InventoryService {
     @Override
     public Message subtractInventroy(String skuId, Integer num) {
-        System.out.println("hystrix调用了");
-        throw new RuntimeException("库存服务不可用");
+        log.error("调用库存服务-subtractInventroy方法失败:入参skuId={},num={}",skuId,num);
+        //return null;
+        return ResponseUtil.responseBody(ExceptionCode.STOCK_SERVICE_ERROR.getCode(),ExceptionCode.STOCK_SERVICE_ERROR.getMsg());
     }
 }

@@ -46,8 +46,9 @@ public enum ExceptionCode {
     CANNOT_DELETE("A-000045","不能删除系统用户或角色"),
 
 
-//库存相关错误,库存错误已A-000100开始
-    STOCK_INSUFFICIENT("A-000100","库存不足"),
+    //库存相关错误,库存错误已A-000100开始
+    STOCK_SERVICE_ERROR("A-000100","库存服务不可用"),
+    STOCK_INSUFFICIENT("A-000101","库存不足"),
 
 
 

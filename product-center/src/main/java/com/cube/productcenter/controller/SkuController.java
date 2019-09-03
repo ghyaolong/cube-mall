@@ -23,6 +23,6 @@ public class SkuController {
     @PostMapping("/subtract")
     public Message substactStock(String skuId, Integer num){
         Message message = inventoryService.subtractInventroy(skuId, num);
-        return ResponseUtil.responseBody(message.getStatus().equals(MsgStatus.SUCCESS));
+        return message;
     }
 }
