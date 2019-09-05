@@ -14,15 +14,15 @@ import java.util.List;
  * @description
  * @date
  */
-
+@RequestMapping("/brands")
 @RestController
 public class BrandController {
 
     @Autowired
     private BrandService brandService;
 
-    @PostMapping("/brands")
-    public Message getAllBrand(@RequestBody BrandVO brandVO){
+    @PostMapping("/query")
+    public Message getAllBrand(@RequestBody(required = false) BrandVO brandVO){
         //todo 需要对参数做统一的验证处理，  加注解，然后在对象的非空字段上加@NotNull注解，类似于这种
         List<BrandVO> allBrand = brandService.getAllBrand(brandVO);
         return ResponseUtil.responseBody(allBrand);

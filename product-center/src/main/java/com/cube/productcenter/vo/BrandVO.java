@@ -16,4 +16,9 @@ public class BrandVO {
      * 品牌编码
      */
     private String code;
+
+    /**
+     * 创建时间
+     */
+    private String createTime;
 }

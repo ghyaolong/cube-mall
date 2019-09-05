@@ -18,6 +18,17 @@ public class TBrand {
      */
     private String code;
 
+    @Column(name = "create_time")
+    private String createTime;
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     /**
      * @return id
      */

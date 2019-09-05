@@ -8,5 +8,6 @@
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="create_time" jdbcType="DATE" property="createTime" />
   </resultMap>
 </mapper>

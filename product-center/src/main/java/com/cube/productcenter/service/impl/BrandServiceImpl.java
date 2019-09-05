@@ -24,7 +24,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public List<BrandVO> getAllBrand(BrandVO brandVO) {
         Example example = new Example(TBrand.class);
-        example.setOrderByClause("createTime desc");
+        example.setOrderByClause("create_time desc");
         List<TBrand> tBrands = tBrandMapper.selectByExample(example);
         List<BrandVO> brandVOS = MyBeanUtils.copyList(tBrands, BrandVO.class);
         return brandVOS;
