@@ -15,3 +15,8 @@ zuul:
     api-b:
       path: /api-order/**
       serviceId: order-center
+
+
+## 需要解密的url 这里做测试
+ecyrypt:
+  urls[0]: /api-product/brands/

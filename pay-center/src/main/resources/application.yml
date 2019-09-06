@@ -7,3 +7,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+jasypt:
+  encryptor:
+    password: bfcb82076aa849588389c7eb121d6af2
+

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping("/spu")
 @RestController
-public class SPUController {
+public class SpUController {
     @Autowired
     private SpuService spuService;
 
