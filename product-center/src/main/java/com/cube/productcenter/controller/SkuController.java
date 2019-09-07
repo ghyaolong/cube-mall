@@ -1,17 +1,15 @@
 package com.cube.productcenter.controller;
 
-import com.cube.mall.constant.MsgStatus;
-import com.cube.mall.model.Constant;
 import com.cube.mall.model.Message;
+import com.cube.mall.model.PageVO;
 import com.cube.mall.model.ResponseUtil;
 import com.cube.productcenter.feign.InventoryService;
+import com.cube.productcenter.service.SkuService;
 import com.cube.productcenter.vo.SkuVO;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 
 /**
  * 商品相关
@@ -23,8 +21,8 @@ public class SkuController {
     @Autowired
     private InventoryService inventoryService;
 
-   /* @Autowired
-    private SkuService skuService;*/
+    @Autowired
+    private SkuService skuService;
 
     @PostMapping("/subtract")
     public Message substactStock(String skuId, Integer num){
@@ -34,12 +32,35 @@ public class SkuController {
 
     /**
      * 查询sku
-     * @param pageInfo
+     * @param pageVO
      * @return
      */
     @PostMapping("/query")
-    public Message findAll(@RequestBody PageInfo<SkuVO> pageInfo){
-        //skuService.findAll(pageInfo);
-        return null;
+    public Message findAll(@RequestBody PageVO<SkuVO> pageVO){
+        PageInfo<SkuVO> pageInfo = skuService.findSkuList(pageVO);
+        return ResponseUtil.responseBody(pageInfo);
+    }
+
+    /**
+     * 添加SKU
+     * @param skuVO
+     * @return
+     */
+    @PostMapping("/create")
+    public Message createSku(@RequestBody SkuVO skuVO){
+        skuService.addSku(skuVO);
+        return ResponseUtil.responseBody("添加成功");
+    }
+
+    @PutMapping("/update")
+    public Message updateSku(@RequestBody SkuVO skuVO){
+        skuService.updateSku(skuVO);
+        return ResponseUtil.responseBody("更新成功");
+    }
+
+    @DeleteMapping("/{id}")
+    public Message delById(@PathVariable String id){
+        skuService.delSkuById(id);
+        return ResponseUtil.responseBody("删除成功");
     }
 }

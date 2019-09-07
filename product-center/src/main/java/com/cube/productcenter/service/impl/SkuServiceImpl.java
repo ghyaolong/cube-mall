@@ -93,18 +93,20 @@ public class SkuServiceImpl implements SkuService {
 
     @Override
     public void addSku(SkuVO skuVO) {
-
+        TSku tSku = MyBeanUtils.copy(skuVO, TSku.class);
+        tSku.setId(cube.UUIDGenerator.UUID32());
+        tSkuMapper.insertSelective(tSku);
     }
 
     @Override
     public void updateSku(SkuVO skuVO) {
-
+        TSku tSku = MyBeanUtils.copy(skuVO, TSku.class);
+        tSkuMapper.updateByPrimaryKeySelective(tSku);
     }
 
     @Override
     public void delSkuById(String id) {
-
+        tSkuMapper.deleteByPrimaryKey(id);
     }
-
 
 }
