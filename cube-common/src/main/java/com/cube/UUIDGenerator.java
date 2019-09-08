@@ -1,4 +1,4 @@
-package cube;
+package com.cube;
 
 import java.util.UUID;
 

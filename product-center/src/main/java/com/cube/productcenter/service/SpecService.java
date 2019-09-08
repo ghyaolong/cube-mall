@@ -7,6 +7,8 @@ import com.cube.productcenter.vo.SpecificationsGroupVO;
 import com.cube.productcenter.vo.SpecificationsOptionsVO;
 import com.cube.productcenter.vo.SpecificationsVO;
 
+import java.util.List;
+
 public interface SpecService {
 
     /**
@@ -14,27 +16,27 @@ public interface SpecService {
      * @param groupId
      * @return
      */
-    Message findByGroupId(String groupId);
+    List<SpecificationsVO> findByGroupId(String groupId);
     /**
      * 查询categoryId下所有的规格
      * @param categoryId
      * @return
      */
-    Message findByCategoryId(String categoryId);
+    List<SpecificationsVO> findByCategoryId(String categoryId);
 
     /**
      * 查询该规格id下所有的选项
      * @param specId
      * @return
      */
-    Message findAllOptionsBySpecId(String specId);
+    List<SpecificationsOptionsVO> findAllOptionsBySpecId(String specId);
 
     /**
      * 查询该SkuId下所有的规格选项
      * @param skuId
      * @return
      */
-    Message findAllOptionsBySkuId(String skuId);
+    List<SpecificationsOptionsVO> findAllOptionsBySkuId(String skuId);
 
     void addGroup(SpecificationsGroupVO specificationsGroupVO);
 

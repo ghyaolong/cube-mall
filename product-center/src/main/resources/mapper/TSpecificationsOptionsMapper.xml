@@ -9,4 +9,8 @@
     <result column="options" jdbcType="VARCHAR" property="options" />
     <result column="specifiction_id" jdbcType="VARCHAR" property="specifictionId" />
   </resultMap>
+
+  <select id="findAllOptionsBySkuId" parameterMap="java.lang.String" resultType="com.cube.productcenter.po.TSpecificationsOptions">
+
+  </select>
 </mapper>
