@@ -1,7 +1,6 @@
 package com.cube.productcenter.service;
 
 
-import com.cube.mall.model.Message;
 import com.cube.productcenter.vo.SkuSpecificationsOptionsVO;
 import com.cube.productcenter.vo.SpecificationsGroupVO;
 import com.cube.productcenter.vo.SpecificationsOptionsVO;

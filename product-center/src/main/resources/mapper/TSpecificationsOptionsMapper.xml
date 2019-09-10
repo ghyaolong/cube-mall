@@ -12,5 +12,9 @@
 
   <select id="findAllOptionsBySkuId" parameterMap="java.lang.String" resultType="com.cube.productcenter.po.TSpecificationsOptions">
 
+  SELECT * FROM t_specifications_options WHERE id
+  IN(
+    SELECT specification_id FROM t_sku_specifications_options WHERE sku_id = #{skuId}
+  )
   </select>
 </mapper>
