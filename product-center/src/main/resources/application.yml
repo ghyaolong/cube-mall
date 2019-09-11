@@ -4,9 +4,9 @@ spring:
   application:
     name: product-center
   datasource:
-    url: jdbc:mysql://localhost:3306/cube_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3307/cube_mall?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
     username: root
-    password: 123456789
+    password: root
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
 eureka:
