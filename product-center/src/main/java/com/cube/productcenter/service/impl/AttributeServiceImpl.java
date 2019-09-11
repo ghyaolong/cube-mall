@@ -1,6 +1,6 @@
 package com.cube.productcenter.service.impl;
 
-import com.cube.UUIDGenerator;
+import com.cube.IDGenerator;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TAttributeMapper;
 import com.cube.productcenter.dao.TAttributeOptionsMapper;
@@ -67,7 +67,7 @@ public class AttributeServiceImpl implements AttributeService {
     @Override
     public void addAttribute(AttributeVO attributeVO) {
         TAttribute tAttribute = MyBeanUtils.copy(attributeVO, TAttribute.class);
-        tAttribute.setId(UUIDGenerator.UUID32());
+        tAttribute.setId(IDGenerator.UUID32());
         tAttributeMapper.insertSelective(tAttribute);
     }
 
@@ -85,7 +85,7 @@ public class AttributeServiceImpl implements AttributeService {
     @Override
     public void addAttributeOptions(AttributeOptionsVO attributeOptionsVO) {
         TAttributeOptions tAttributeOptions = MyBeanUtils.copy(attributeOptionsVO, TAttributeOptions.class);
-        tAttributeOptions.setId(UUIDGenerator.UUID32());
+        tAttributeOptions.setId(IDGenerator.UUID32());
         tAttributeOptionsMapper.insertSelective(tAttributeOptions);
     }
 
@@ -103,7 +103,7 @@ public class AttributeServiceImpl implements AttributeService {
     @Override
     public void addSkuOptions(SkuOptionsVO skuOptionsVO) {
         TSkuOptions tSkuOptions = MyBeanUtils.copy(skuOptionsVO, TSkuOptions.class);
-        tSkuOptions.setId(UUIDGenerator.UUID32());
+        tSkuOptions.setId(IDGenerator.UUID32());
         tSkuOptionsMapper.insertSelective(tSkuOptions);
     }
 

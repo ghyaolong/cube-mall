@@ -1,6 +1,6 @@
 package com.cube.webadmin.service;
 
-import com.chinasoft.tax.vo.PermissionVo;
+import com.cube.webadmin.vo.PermissionVO;
 
 import java.util.List;
 
@@ -17,19 +17,19 @@ public interface PermissionService {
      * @param id
      * @return
      */
-    PermissionVo findById(String id);
+    PermissionVO findById(String id);
 
     /**
      * 通过userId查找该用户所拥有的权限
      * @param userId
      * @return
      */
-    List<PermissionVo> findByUserId(String userId);
+    List<PermissionVO> findByUserId(String userId);
     /**
      *
      * @param permissionVo
      */
-    void addPermission(PermissionVo permissionVo);
+    void addPermission(PermissionVO permissionVo);
 
     /**
      *
@@ -41,7 +41,7 @@ public interface PermissionService {
      * 修改权限
      * @param permissionVo
      */
-    void editPermission(PermissionVo permissionVo);
+    void editPermission(PermissionVO permissionVo);
 
 
     /**
@@ -50,14 +50,14 @@ public interface PermissionService {
      * @param level
      * @return
      */
-    List<PermissionVo> findByLevelOrderBySortOrder(Integer level);
+    List<PermissionVO> findByLevelOrderBySortOrder(Integer level);
 
     /**
      * 通过parendId查找
      * @param parentId
      * @return
      */
-    List<PermissionVo> findByParentIdOrderBySortOrder(String parentId);
+    List<PermissionVO> findByParentIdOrderBySortOrder(String parentId);
 
     /**
      * 通过类型和状态获取
@@ -65,12 +65,12 @@ public interface PermissionService {
      * @param status
      * @return
      */
-    List<PermissionVo> findByTypeAndStatusOrderBySortOrder(Integer type, Integer status);
+    List<PermissionVO> findByTypeAndStatusOrderBySortOrder(Integer type, Integer status);
 
     /**
      * 通过名称获取
      * @param title
      * @return
      */
-    List<PermissionVo> findByTitle(String title);
+    List<PermissionVO> findByTitle(String title);
 }

@@ -5,8 +5,8 @@ import com.cube.utils.ThreadPoolUtil;
 import com.cube.webadmin.annotation.SystemLog;
 import com.cube.webadmin.beanUtils.IpInfoUtil;
 import com.cube.webadmin.config.security.CurrentUserUtils;
-import com.cube.webadmin.service.LogInfoService;
-import com.cube.webadmin.vo.LogInfoVO;
+import com.cube.webadmin.service.LogService;
+import com.cube.webadmin.vo.LogVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
@@ -37,7 +37,7 @@ public class SystemLogAspect {
     private static final ThreadLocal<Date> beginTimeThreadLocal = new NamedThreadLocal<Date>("ThreadLocal beginTime");
 
     @Autowired
-    private LogInfoService logInfoService;
+    private LogService logInfoService;
 
     @Autowired(required = false)
     private HttpServletRequest request;
@@ -103,7 +103,7 @@ public class SystemLogAspect {
                 Signature signature = joinPoint.getSignature();
                 String declaringTypeName = joinPoint.getSignature().getDeclaringTypeName();
                 String methodName = declaringTypeName+"."+signature.getName();
-                LogInfoVO logInfoVo = new LogInfoVO();
+                LogVO logInfoVo = new LogVO();
                 logInfoVo.setCreator(username);
                 //日志标题
                 logInfoVo.setMethod(getControllerMethodDescription(joinPoint));
@@ -138,10 +138,10 @@ public class SystemLogAspect {
      */
     private static class SaveSystemLogThread implements Runnable {
 
-        private LogInfoVO logInfoVo;
-        private LogInfoService logInfoService;
+        private LogVO logInfoVo;
+        private LogService logInfoService;
 
-        public SaveSystemLogThread(LogInfoVO logInfoVo, LogInfoService logInfoService) {
+        public SaveSystemLogThread(LogVO logInfoVo, LogService logInfoService) {
             this.logInfoVo = logInfoVo;
             this.logInfoService = logInfoService;
         }

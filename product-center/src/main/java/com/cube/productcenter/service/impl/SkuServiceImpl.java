@@ -1,14 +1,12 @@
 package com.cube.productcenter.service.impl;
 
-import com.cube.UUIDGenerator;
+import com.cube.IDGenerator;
 import com.cube.mall.model.PageVO;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TSkuMapper;
 import com.cube.productcenter.po.TSku;
-import com.cube.productcenter.po.TSpu;
 import com.cube.productcenter.service.SkuService;
 import com.cube.productcenter.vo.SkuVO;
-import com.cube.productcenter.vo.SpuVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +93,7 @@ public class SkuServiceImpl implements SkuService {
     @Override
     public void addSku(SkuVO skuVO) {
         TSku tSku = MyBeanUtils.copy(skuVO, TSku.class);
-        tSku.setId(UUIDGenerator.UUID32());
+        tSku.setId(IDGenerator.UUID32());
         tSkuMapper.insertSelective(tSku);
     }
 

@@ -1,11 +1,11 @@
 package com.cube.webadmin.service;
 
 import com.cube.mall.model.PageVO;
-import com.cube.webadmin.vo.LogInfoVO;
+import com.cube.webadmin.vo.LogVO;
 import com.cube.webadmin.vo.SearchVO;
 import com.github.pagehelper.PageInfo;
 
-public interface LogInfoService {
+public interface LogService {
 
 
     /**
@@ -13,13 +13,13 @@ public interface LogInfoService {
      * @param pageVO
      * @return
      */
-    PageInfo<LogInfoVO> getAllPage(PageVO pageVO, SearchVO searchVO, LogInfoVO logInfoVO);
+    PageInfo<LogVO> getAllPage(PageVO<LogVO> pageVO);
 
     /**
      * 保存日志
-     * @param logInfoVo
+     * @param logVO
      */
-    void add(LogInfoVO logInfoVo);
+    void add(LogVO logVO);
 
     void delAll();
 
