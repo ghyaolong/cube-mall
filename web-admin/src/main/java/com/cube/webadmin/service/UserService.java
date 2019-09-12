@@ -1,10 +1,7 @@
 package com.cube.webadmin.service;
 
-import com.chinasoft.tax.po.TaskTipPo;
-import com.chinasoft.tax.vo.MyPageInfo;
-import com.chinasoft.tax.vo.PageVo;
-import com.chinasoft.tax.vo.SearchVo;
-import com.chinasoft.tax.vo.UserVo;
+import com.cube.mall.model.PageVO;
+import com.cube.webadmin.vo.UserVO;
 import com.github.pagehelper.PageInfo;
 
 import java.text.ParseException;
@@ -22,13 +19,13 @@ public interface UserService {
      * @param vo
      * @return
      */
-    boolean login(UserVo vo);
+    boolean login(UserVO vo);
 
     /**
      * 获取所有用户数据
      * @return
      */
-    List<UserVo> getAllUser();
+    List<UserVO> getAllUser();
 
     /**
      * 判断当前用户是否是管理员
@@ -42,27 +39,27 @@ public interface UserService {
      * @param roleCode
      * @return
      */
-    List<UserVo> getAllUserByRoleCode(String roleCode);
+    List<UserVO> getAllUserByRoleCode(String roleCode);
     /**
      * @Description:查询某一个用户，如果有多个，则报错
      * @param vo
      * @return 返回唯一一个用户
      */
-    UserVo getUser(UserVo vo);
+    UserVO getUser(UserVO vo);
 
     /**
      * 通过userName查找用户
      * @param username
      * @return
      */
-    UserVo getUserByUserName(String username);
+    UserVO getUserByUserName(String username);
 
     /**
      * 通过主键id查询用户
      * @param id
      * @return
      */
-    UserVo getUserById(String id);
+    UserVO getUserById(String id);
     /**
      * @Description: 已分页方式获取用户
      * @param pageNow : 当前页
@@ -72,7 +69,7 @@ public interface UserService {
      * @Date: Created in 16:57 2018/10/21
      */
 
-    MyPageInfo<UserVo> getUserByPage(int pageNow, int pageSize);
+    PageInfo<UserVO> getUserByPage(int pageNow, int pageSize);
 
     /**
      * @Description:
@@ -81,13 +78,13 @@ public interface UserService {
      * @param vo 额外都查询条件
      * @return
      */
-    MyPageInfo<UserVo> getUserByPage(int pageNow, int pageSize, UserVo vo);
+    PageInfo<UserVO> getUserByPage(int pageNow, int pageSize, UserVO vo);
 
     /**
      * @Description:添加用户
      * @param vo
      */
-    void addUser(UserVo vo);
+    void addUser(UserVO vo);
 
     /**
      * 删除用户
@@ -105,38 +102,15 @@ public interface UserService {
      * 修改用户
      * @param vo
      */
-    void editUser(UserVo vo);
+    void editUser(UserVO vo);
 
     /**
      * 修改密码
-     * @param userVo
+     * @param UserVO
      */
-    void updatePassord(UserVo userVo);
+    void updatePassord(UserVO UserVO);
 
 
-    MyPageInfo<UserVo> findByCondition(PageVo pageVo, SearchVo searchVo, UserVo userVo) throws ParseException;
+    PageInfo<UserVO> findByCondition(PageVO<UserVO> pageVO) throws ParseException;
 
-    /**
-     * 获取用户需要处理的公司的统计
-     * @param status
-     * @return
-     */
-    List<TaskTipPo> getTaskTip(Integer status);
-
-    /**
-     * 获取当前登录用户的上级审核人
-     * @param userId
-     * @return
-     */
-    List<UserVo> getPrevReview(String userId);
-
-    /**
-     * 通过用户id和流程key返回用户和该用户的角色信息
-     * @param userId
-     * @param key
-     * @return
-     */
-    UserVo getUserInfoByUserIdAndKey(String userId, String key);
-
-    List<UserVo> getUserInfoByKey(String key);
 }

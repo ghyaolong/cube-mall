@@ -2,6 +2,8 @@ package com.cube.webadmin.vo;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * @author tututu
  * @description
@@ -43,4 +45,14 @@ public class UserVO {
     private String street;
 
     private String passStrength;
+
+    private String salt;
+
+    private List<RoleVO> roles;
+
+    private String roleIds;
+
+    private List<PermissionVO> permissions;
+
+    private String permissionsIds;
 }
