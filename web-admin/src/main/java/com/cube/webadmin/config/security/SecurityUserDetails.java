@@ -1,9 +1,9 @@
 package com.cube.webadmin.config.security;
 
-import com.chinasoft.tax.constant.CommonConstant;
-import com.chinasoft.tax.vo.PermissionVo;
-import com.chinasoft.tax.vo.RoleVo;
-import com.chinasoft.tax.vo.UserVo;
+import com.cube.webadmin.beanUtils.constant.CommonConstant;
+import com.cube.webadmin.vo.PermissionVO;
+import com.cube.webadmin.vo.RoleVO;
+import com.cube.webadmin.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 @Slf4j
-public class SecurityUserDetails extends UserVo implements UserDetails {
+public class SecurityUserDetails extends UserVO implements UserDetails {
     private static final long serialVersionUID = 1L;
 
-    public SecurityUserDetails(UserVo user) {
+    public SecurityUserDetails(UserVO user) {
 
         if(user!=null) {
             this.setUsername(user.getUsername());
@@ -36,10 +36,10 @@ public class SecurityUserDetails extends UserVo implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         List<GrantedAuthority> authorityList = new ArrayList<>();
-        List<PermissionVo> permissions = this.getPermissions();
+        List<PermissionVO> permissions = this.getPermissions();
         // 添加请求权限
         if(permissions!=null&&permissions.size()>0){
-            for (PermissionVo permission : permissions) {
+            for (PermissionVO permission : permissions) {
                 if(CommonConstant.PERMISSION_OPERATION.equals(permission.getType())
                         &&StringUtils.isNotBlank(permission.getTitle())
                         &&StringUtils.isNotBlank(permission.getPath())) {
@@ -49,7 +49,7 @@ public class SecurityUserDetails extends UserVo implements UserDetails {
             }
         }
         // 添加角色
-        List<RoleVo> roles = this.getRoles();
+        List<RoleVO> roles = this.getRoles();
         if(roles!=null&&roles.size()>0){
             // lambda表达式
             roles.forEach(item -> {

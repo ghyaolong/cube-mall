@@ -1,5 +1,5 @@
 package com.cube.webadmin.service.impl;
-import com.cube.IDGenerator;
+import com.cube.IDGeneratorUtils;
 import com.cube.mall.enums.ExceptionCode;
 import com.cube.mall.exception.BizException;
 import com.cube.webadmin.beanUtils.MyBeanUtils;
@@ -50,7 +50,7 @@ public class PermissionServiceImpl implements PermissionService {
         log.info("添加权限,入参["+permissionVo+"]");
         TPermission tPermission = new TPermission();
         BeanUtils.copyProperties(permissionVo,tPermission);
-        tPermission.setId(IDGenerator.UUID32());
+        tPermission.setId(IDGeneratorUtils.UUID32());
         tPermission.setCreateTime(new Date());
         tPermissionMapper.insertSelective(tPermission);
         log.info("添加权限成功,结果["+tPermission+"]");

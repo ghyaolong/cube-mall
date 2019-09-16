@@ -1,6 +1,6 @@
 package com.cube.productcenter.service.impl;
 
-import com.cube.IDGenerator;
+import com.cube.IDGeneratorUtils;
 import com.cube.mall.model.PageVO;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TSkuMapper;
@@ -93,7 +93,7 @@ public class SkuServiceImpl implements SkuService {
     @Override
     public void addSku(SkuVO skuVO) {
         TSku tSku = MyBeanUtils.copy(skuVO, TSku.class);
-        tSku.setId(IDGenerator.UUID32());
+        tSku.setId(IDGeneratorUtils.UUID32());
         tSkuMapper.insertSelective(tSku);
     }
 

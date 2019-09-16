@@ -1,6 +1,6 @@
 package com.cube.productcenter.service.impl;
 
-import com.cube.IDGenerator;
+import com.cube.IDGeneratorUtils;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TSkuSpecificationsOptionsMapper;
 import com.cube.productcenter.dao.TSpecificationsGroupMapper;
@@ -72,28 +72,28 @@ public class SpecServiceImpl implements SpecService {
     @Override
     public void addGroup(SpecificationsGroupVO specificationsGroupVO) {
         TSpecificationsGroup copy = MyBeanUtils.copy(specificationsGroupVO, TSpecificationsGroup.class);
-        copy.setId(IDGenerator.UUID32());
+        copy.setId(IDGeneratorUtils.UUID32());
         tSpecificationsGroupMapper.insertSelective(copy);
     }
 
     @Override
     public void addSpec(SpecificationsVO specificationsVO) {
         TSpecifications copy = MyBeanUtils.copy(specificationsVO, TSpecifications.class);
-        copy.setId(IDGenerator.UUID32());
+        copy.setId(IDGeneratorUtils.UUID32());
         tSpecificationsMapper.insertSelective(copy);
     }
 
     @Override
     public void addSpecOptions(SpecificationsOptionsVO specificationsOptionsVO) {
         TSpecificationsOptions copy = MyBeanUtils.copy(specificationsOptionsVO, TSpecificationsOptions.class);
-        copy.setId(IDGenerator.UUID32());
+        copy.setId(IDGeneratorUtils.UUID32());
         tSpecificationsOptionsMapper.insertSelective(copy);
     }
 
     @Override
     public void addSkuSpecOptions(SkuSpecificationsOptionsVO skuSpecificationsOptionsVO) {
         TSkuSpecificationsOptions copy = MyBeanUtils.copy(skuSpecificationsOptionsVO, TSkuSpecificationsOptions.class);
-        copy.setId(IDGenerator.UUID32());
+        copy.setId(IDGeneratorUtils.UUID32());
         tSkuSpecificationsOptionsMapper.insertSelective(copy);
     }
 

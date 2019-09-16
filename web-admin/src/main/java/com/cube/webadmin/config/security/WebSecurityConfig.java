@@ -1,9 +1,9 @@
 package com.cube.webadmin.config.security;
-import com.chinasoft.tax.config.security.jwt.AuthenticationFailHandler;
-import com.chinasoft.tax.config.security.jwt.AuthenticationSuccessHandler;
-import com.chinasoft.tax.config.security.jwt.JWTAuthenticationFilter;
-import com.chinasoft.tax.config.security.jwt.RestAccessDeniedHandler;
-import com.chinasoft.tax.config.security.permission.MyFilterSecurityInterceptor;
+
+import com.cube.webadmin.config.security.jwt.AuthenticationFailHandler;
+import com.cube.webadmin.config.security.jwt.JWTAuthenticationFilter;
+import com.cube.webadmin.config.security.jwt.RestAccessDeniedHandler;
+import com.cube.webadmin.config.security.permission.MyFilterSecurityInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configurers.Expression
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 /**
  * Security 核心配置类

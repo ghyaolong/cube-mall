@@ -3,6 +3,7 @@ package com.cube.webadmin.vo;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author tututu
@@ -32,4 +33,6 @@ public class RoleVO {
     private String description;
 
     private Integer dataType;
+
+    private List<PermissionVO> permissions;
 }

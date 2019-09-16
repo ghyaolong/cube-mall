@@ -7,7 +7,7 @@ import java.util.UUID;
  * @description ID生成器
  * @date
  */
-public class IDGenerator {
+public class IDGeneratorUtils {
     public static String UUID32(){
         return UUID.randomUUID().toString().replace("-","");
     }

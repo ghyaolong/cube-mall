@@ -1,5 +1,5 @@
 package com.cube.webadmin.service.impl;
-import com.cube.IDGenerator;
+import com.cube.IDGeneratorUtils;
 import com.cube.mall.model.PageVO;
 import com.cube.webadmin.beanUtils.MyBeanUtils;
 import com.cube.webadmin.dao.TLogMapper;
@@ -75,7 +75,7 @@ public class LogServiceImpl implements LogService {
     public void add(LogVO logVO) {
         log.info("添加日志，输入参数："+logVO.toString());
         TLog tLogInfo = MyBeanUtils.copy(logVO, TLog.class);
-        tLogInfo.setId(IDGenerator.UUID32());
+        tLogInfo.setId(IDGeneratorUtils.UUID32());
         tLogInfo.setCreateTime(new Date());
         tLogInfo.setName(logVO.getUsername());
         tLogMapper.insertSelective(tLogInfo);

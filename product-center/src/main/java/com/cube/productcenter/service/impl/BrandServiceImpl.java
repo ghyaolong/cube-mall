@@ -1,11 +1,11 @@
 package com.cube.productcenter.service.impl;
 
+import com.cube.IDGeneratorUtils;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TBrandMapper;
 import com.cube.productcenter.po.TBrand;
 import com.cube.productcenter.service.BrandService;
 import com.cube.productcenter.vo.BrandVO;
-import cube.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
@@ -41,7 +41,7 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public void addBrand(BrandVO brandVO) {
         TBrand tBrand = MyBeanUtils.copy(brandVO, TBrand.class);
-        tBrand.setId(UUIDGenerator.UUID32());
+        tBrand.setId(IDGeneratorUtils.UUID32());
         tBrandMapper.insertSelective(tBrand);
     }
 

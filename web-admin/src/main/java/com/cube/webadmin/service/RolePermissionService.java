@@ -1,6 +1,6 @@
 package com.cube.webadmin.service;
 
-import com.chinasoft.tax.vo.RolePermissionVo;
+import com.cube.webadmin.vo.RolePermissionVO;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface RolePermissionService {
      * @param permissionId
      * @return
      */
-    List<RolePermissionVo> findByPermissionId(String permissionId);
+    List<RolePermissionVO> findByPermissionId(String permissionId);
 
     /**
      * 通过roleId删除

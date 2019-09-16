@@ -26,4 +26,20 @@
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="show_always" jdbcType="BIT" property="showAlways" />
   </resultMap>
+
+  <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+      SELECT DISTINCT p.id, p.name, p.title, p.path, p.icon, p.type, p.component, p.level, p.button_type, p.parent_id, p.sort_order, p.description, p.status, p.url
+      FROM t_user u
+      LEFT JOIN t_user_role ur ON u.id = ur.user_id
+      LEFT JOIN t_role_permission rp ON ur.role_id = rp.role_id
+      LEFT JOIN t_permission p ON p.id = rp.permission_id
+      WHERE u.id = #{userId} AND p.status = 0
+      ORDER BY p.sort_order ASC
+
+  </select>
+
+  <select id="findByRoleId" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from t_permission p where p.id IN
+        (select rp.permission_id from t_role_permission rp where rp.role_Id = #{roleId})
+    </select>
 </mapper>

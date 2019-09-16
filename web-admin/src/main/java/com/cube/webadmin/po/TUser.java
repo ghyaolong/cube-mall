@@ -55,6 +55,16 @@ public class TUser {
     @Column(name = "pass_strength")
     private String passStrength;
 
+    private String salt;
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
+
     /**
      * @return id
      */

@@ -1,10 +1,9 @@
 package com.cube.webadmin.service.impl;
-
-import com.chinasoft.tax.common.utils.MyBeanUtils;
-import com.chinasoft.tax.dao.TRolePermissionMapper;
-import com.chinasoft.tax.po.TRolePermission;
-import com.chinasoft.tax.service.RolePermissionService;
-import com.chinasoft.tax.vo.RolePermissionVo;
+import com.cube.webadmin.beanUtils.MyBeanUtils;
+import com.cube.webadmin.dao.TRolePermissionMapper;
+import com.cube.webadmin.po.TRolePermission;
+import com.cube.webadmin.service.RolePermissionService;
+import com.cube.webadmin.vo.RolePermissionVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,12 +24,12 @@ public class RolePermissionServiceImpl implements RolePermissionService {
     private TRolePermissionMapper tRolePermissionMapper;
 
     @Override
-    public List<RolePermissionVo> findByPermissionId(String permissionId) {
+    public List<RolePermissionVO> findByPermissionId(String permissionId) {
         Example example = new Example(TRolePermission.class);
         Example.Criteria criteria = example.createCriteria();
         criteria.andEqualTo("permissionId",permissionId);
         List<TRolePermission> tRolePermissionList = tRolePermissionMapper.selectByExample(example);
-        List<RolePermissionVo> rolePermissionVoList = MyBeanUtils.copyList(tRolePermissionList, RolePermissionVo.class);
+        List<RolePermissionVO> rolePermissionVoList = MyBeanUtils.copyList(tRolePermissionList, RolePermissionVO.class);
         return rolePermissionVoList;
     }
 

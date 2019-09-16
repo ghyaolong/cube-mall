@@ -1,5 +1,6 @@
 package com.cube.productcenter.service.impl;
 
+import com.cube.IDGeneratorUtils;
 import com.cube.mall.model.PageVO;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TSpuMapper;
@@ -8,7 +9,6 @@ import com.cube.productcenter.service.SpuService;
 import com.cube.productcenter.vo.SpuVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import cube.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -70,9 +70,8 @@ public class SpuServiceImpl implements SpuService {
 
     @Override
     public void addSpu(SpuVO spuVO) {
-        Example example = new Example(TSpu.class);
         TSpu tSpu = MyBeanUtils.copy(spuVO, TSpu.class);
-        tSpu.setId(UUIDGenerator.UUID32());
+        tSpu.setId(IDGeneratorUtils.UUID32());
         tSpuMapper.insertSelective(tSpu);
     }
 

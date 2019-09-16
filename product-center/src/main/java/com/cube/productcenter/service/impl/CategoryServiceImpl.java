@@ -1,12 +1,12 @@
 package com.cube.productcenter.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.cube.IDGeneratorUtils;
 import com.cube.productcenter.common.MyBeanUtils;
 import com.cube.productcenter.dao.TCategoryMapper;
 import com.cube.productcenter.po.TCategory;
 import com.cube.productcenter.service.CategoryService;
 import com.cube.productcenter.vo.CategoryVO;
-import cube.UUIDGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,7 +58,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void addCategoryVO(CategoryVO categoryVO) {
         log.info("添加类别,入参[{}]",JSON.toJSONString(categoryVO));
         TCategory tCategory = MyBeanUtils.copy(categoryVO, TCategory.class);
-        tCategory.setId(UUIDGenerator.UUID32());
+        tCategory.setId(IDGeneratorUtils.UUID32());
         tCategoryMapper.insertSelective(tCategory);
         log.info("添加类别成功");
     }
