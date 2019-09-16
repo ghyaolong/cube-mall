@@ -68,10 +68,6 @@ public class TUser {
         this.salt = salt;
     }
 
-    /**
-     * 盐值
-     */
-    private String salt;
 
 
 }

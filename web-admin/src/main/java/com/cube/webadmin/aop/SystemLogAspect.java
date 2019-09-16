@@ -52,7 +52,7 @@ public class SystemLogAspect {
      * Controller层切点,注解方式
      */
     //@Pointcut("execution(* *..controller..*Controller*.*(..))")
-    @Pointcut("@annotation(com.cube.webadmin.aop.SystemLog)")
+    @Pointcut("@annotation(com.cube.webadmin.annotation.SystemLog)")
     public void controllerAspect() {
 
     }
