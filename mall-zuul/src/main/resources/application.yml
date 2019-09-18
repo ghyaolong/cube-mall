@@ -19,4 +19,4 @@ zuul:
 
 ## 需要解密的url 这里做测试
 ecyrypt:
-  urls[0]: /api-product/brands/
+  urls[0]:
