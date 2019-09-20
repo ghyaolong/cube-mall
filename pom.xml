@@ -33,7 +33,8 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.15</version>
+            <!--<version>8.0.15</version>-->
+            <version>5.1.44</version>
         </dependency>
 
         <!--spring boot
@@ -83,7 +84,6 @@
         <module>mall-inventory-service</module>
         <module>mall-shopping-cart-service</module>
         <module>mall-model</module>
-        <module>cube-common</module>
     </modules>
 
     <dependencyManagement>

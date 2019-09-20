@@ -12,7 +12,7 @@
     <result column="is_visable" jdbcType="INTEGER" property="isVisable" />
   </resultMap>
 
-  <select id="findAllAttributeOptionsBySkuId" parameterMap="java.lang.String" resultType="com.cube.productcenter.po.TAttribute">
+  <select id="findAllAttributeOptionsBySkuId" parameterType="java.lang.String" resultType="com.cube.productcenter.po.TAttribute">
     SELECT * from t_attribute_options ao where ao.id
     IN(
       SELECT o.options_id FROM t_sku_options o where o.sku_id = #{skuId}

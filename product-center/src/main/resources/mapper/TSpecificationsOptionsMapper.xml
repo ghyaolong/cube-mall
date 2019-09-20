@@ -10,7 +10,7 @@
     <result column="specifiction_id" jdbcType="VARCHAR" property="specifictionId" />
   </resultMap>
 
-  <select id="findAllOptionsBySkuId" parameterMap="java.lang.String" resultType="com.cube.productcenter.po.TSpecificationsOptions">
+  <select id="findAllOptionsBySkuId" parameterType="java.lang.String" resultType="com.cube.productcenter.po.TSpecificationsOptions">
 
   SELECT * FROM t_specifications_options WHERE id
   IN(
