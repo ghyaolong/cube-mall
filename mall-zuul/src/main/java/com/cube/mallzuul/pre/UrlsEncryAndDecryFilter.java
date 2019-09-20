@@ -1,15 +1,23 @@
 package com.cube.mallzuul.pre;
 
+import com.alibaba.fastjson.JSON;
 import com.cube.mallzuul.conf.UrlsEncryAndDecry;
+import com.cube.security.RSAEncrypt;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
+import io.micrometer.core.instrument.util.JsonUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import sun.misc.BASE64Decoder;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.springframework.cloud.netflix.zuul.filters.support.FilterConstants.PRE_TYPE;
 
@@ -39,32 +47,33 @@ public class UrlsEncryAndDecryFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
-        /*RequestContext ctx = RequestContext.getCurrentContext();
+        RequestContext ctx = RequestContext.getCurrentContext();
         InputStream stream = ctx.getResponseDataStream();
         HttpServletRequest request = ctx.getRequest();
         Object paramMaps = request.getParameter("data");
         String requestPath = request.getServletPath();
+        System.out.println(requestPath);
         List<String> urls = urlsEncryAndDecry.getUrls();
         for (String url : urls) {
-            if(requestPath.contains(url)){
-                System.out.println("进行加密解密:"+url);
+            if (!StringUtils.isEmpty(url) && requestPath.contains(url)) {
+                System.out.println("进行加密解密:" + url);
                 ctx.setSendZuulResponse(false);
                 ctx.setResponseStatusCode(401);
                 try {
                     ctx.getResponse().setContentType("text/html;charset=UTF-8");
                     ctx.getResponse().getWriter().write("进行url拦截");
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
                 return null;
 
-            }else{
-                System.out.println("放行："+url);
+            } else {
+                System.out.println("放行：" + url);
                 return null;
             }
-        }*/
+        }
 
-        /*// 私钥解密
+        // 私钥解密
         try {
             if (paramMaps != null && paramMaps.toString().length() > 0) {
                 BASE64Decoder decoder = new BASE64Decoder();
@@ -73,7 +82,8 @@ public class UrlsEncryAndDecryFilter extends ZuulFilter {
                         decoder.decodeBuffer(paramMaps.toString()));
                 // 解密后的字符串
                 String restr = new String(res);
-                Map<String, Object> map = JsonUtils.jsonToObject(restr, HashMap.class);
+                //Map<String, Object> map = JsonUtils.jsonToObject(restr, HashMap.class);
+                Map<String, Object> map = JSON.parseObject(restr, HashMap.class);
                 // 传回请求体
                 Map<String, List<String>> queryParams = new HashMap<>();
                 List<String> keys = new ArrayList<String>(map.keySet());
@@ -85,12 +95,11 @@ public class UrlsEncryAndDecryFilter extends ZuulFilter {
                     queryParams.put(key, list);
                 }
                 ctx.setRequestQueryParams(queryParams);
-
             }
         } catch (Exception e) {
             e.printStackTrace();
             ctx.setSendZuulResponse(false);
-        }*/
+        }
         return null;
     }
 }
